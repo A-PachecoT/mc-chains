@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\begin{document}
+
+# Método del Punto Interior
+
+## Descripción del Método
+El Método del Punto Interior es un enfoque de optimización utilizado para resolver problemas de programación lineal y no lineal. Se basa en la idea de encontrar la solución óptima de un problema minimizando una función objetivo sujeta a ciertas restricciones. Este método se caracteriza por su eficiencia y capacidad para manejar problemas de gran escala.
+
+## Conceptos Clave
+- **Punto Interior**: Representa un punto dentro del conjunto factible donde se encuentra la solución óptima.
+- **Función Objetivo**: La función que se busca minimizar o maximizar.
+- **Restricciones**: Limitaciones que deben cumplirse para que la solución sea válida.
+- **Direcciones Centrales**: Son las direcciones que se mueven hacia el interior del conjunto factible.
+- **Método de Newton**: Utilizado para resolver el sistema de ecuaciones que define las direcciones centrales.
+
+## Casos de Uso
+- **Planificación de la producción**: Se puede utilizar el Método del Punto Interior para optimizar la asignación de recursos en una planta de producción.
+- **Diseño de redes de transporte**: Permite encontrar la distribución óptima de rutas y medios de transporte para minimizar costos.
+- **Problemas de asignación de recursos**: Ayuda a encontrar la asignación más eficiente de recursos limitados, como personal o presupuesto.
+
+En resumen, el Método del Punto Interior es una herramienta poderosa para resolver problemas de optimización en diversas áreas, ofreciendo soluciones eficientes y precisas.
+
+Aquí tienes un pseudocódigo básico para el método del punto interior:
+
+\begin{algorithm}
+\caption{Método del Punto Interior}
+\begin{algorithmic}
+\State Definir la función objetivo y las restricciones del problema de optimización.
+\State Inicializar los parámetros del método (tolerancia, número máximo de iteraciones, punto inicial, etc.).
+\State Calcular las matrices y vectores necesarios para el método (Hessiano, gradiente, matriz de restricciones, etc.).
+\While {no se alcance la tolerancia o el número máximo de iteraciones}
+   \State Calcular la dirección de búsqueda utilizando el método de Newton.
+   \State Calcular el paso óptimo utilizando una línea de búsqueda.
+   \State Actualizar el punto actual con el paso óptimo.
+   \State Calcular el gradiente y la matriz de restricciones en el nuevo punto.
+   \State Verificar si se cumple la condición de parada.
+\EndWhile
+\State Devolver el punto óptimo encontrado.
+\end{algorithmic}
+\end{algorithm}
+
+Este pseudocódigo es solo un esquema general del método del punto interior y puede variar dependiendo de la implementación específica y del problema de optimización en cuestión.\end{document}
