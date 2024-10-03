@@ -109,66 +109,76 @@ El valor minimo aproximado es: 1.0000000149011612
 \end{lstlisting}
 """
 
-EXPLAIN_METHOD_PROMPT = """
+DESCRIPTION_PROMPT = """
 {language}
-Given the course "{course}" and the method "{method}", please provide a detailed explanation in LaTeX format, following the structure and style of the example below. Include the following sections:
+Proporcione una descripción detallada del método "{method}" en el curso "{course}" en formato LaTeX. Incluya una explicación general del método, su propósito y sus características principales. Use notación matemática cuando sea apropiado.
 
-1. Method Description
-2. Algorithm Intuition
-3. Algorithm in pseudocode
-4. Step-by-step example
-5. Python implementation
-
-Here's an example of the expected format and level of detail:
+Ejemplo de formato y nivel de detalle:
 
 {one_shot_example}
 
-Now, please provide a similar explanation for the given course and method.
+Genere solo la subsección de Descripción, siguiendo el estilo y formato del ejemplo.
 """
 
-PSEUDOCODE_PROMPT = """
+INTUITION_PROMPT = """
 {language}
-Based on the explanation of the method "{method}" in the course "{course}", please provide a pseudocode representation of the method using LaTeX and the algorithm environment. Use clear and concise steps that outline the algorithm or process. Follow the style and format of the example below:
+Basándose en la descripción proporcionada, explique la intuición detrás del algoritmo "{method}" en el curso "{course}" en formato LaTeX. Incluya una explicación de cómo funciona el método conceptualmente y por qué es efectivo.
+
+Descripción previa:
+{description}
+
+Ejemplo de formato y nivel de detalle:
 
 {one_shot_example}
 
-Now, please provide the pseudocode for the given method.
+Genere solo la subsección de Intuición del Algoritmo, siguiendo el estilo y formato del ejemplo.
+"""
+
+ALGORITHM_PROMPT = """
+{language}
+Proporcione el algoritmo formal para el método "{method}" en el curso "{course}" en formato LaTeX, utilizando el entorno 'algorithm' y 'algorithmic'. Asegúrese de que el algoritmo sea preciso y refleje la descripción e intuición proporcionadas.
+
+Descripción e intuición previas:
+{description}
+{intuition}
+
+Ejemplo de formato y nivel de detalle:
+
+{one_shot_example}
+
+Genere solo la subsección del Algoritmo, siguiendo el estilo y formato del ejemplo.
 """
 
 STEP_BY_STEP_EXAMPLE_PROMPT = """
 {language}
-Using the pseudocode for the method "{method}" in the course "{course}", please provide a step-by-step example of how this method would be applied to a specific problem. Use a realistic scenario and show each step of the process. Format your response in LaTeX, following the style and detail level of the example below:
+Proporcione un ejemplo paso a paso detallado de cómo se aplica el método "{method}" en el curso "{course}" a un problema específico. Use notación matemática y explique cada paso claramente.
+
+Algoritmo:
+{algorithm}
+
+Ejemplo de formato y nivel de detalle:
 
 {one_shot_example}
 
-Now, please provide a step-by-step example for the given method.
+Genere solo la subsección de Ejemplo paso a paso, siguiendo el estilo y formato del ejemplo.
 """
 
 PYTHON_CODE_PROMPT = """
 {language}
-Based on the pseudocode and step-by-step example for the method "{method}" in the course "{course}", please provide a Python implementation of this method. Include comments to explain key parts of the code. Format your response using the LaTeX mintedbox environment, following the style of the example below:
+Basándose en el algoritmo y el ejemplo paso a paso, proporcione una implementación en Python del método "{method}" para el curso "{course}". Incluya comentarios explicativos y use el entorno 'mintedbox' de LaTeX para el código.
+
+Algoritmo y ejemplo paso a paso:
+{algorithm}
+{step_by_step}
+
+Ejemplo de formato y nivel de detalle:
 
 {one_shot_example}
 
-Now, please provide the Python implementation for the given method.
+Genere solo la subsección de Código en Python, siguiendo el estilo y formato del ejemplo.
 """
 
-PARSE_MARKDOWN_TO_LATEX_PROMPT = """
-{language}
-Given the following content that includes an explanation and pseudocode for the method "{method}" in the course "{course}", please ensure it is properly formatted in LaTeX. Make any necessary adjustments to match the style and structure of the example below:
-
-{one_shot_example}
-
-Here's the content to format:
-
-{markdown_content}
-
-Please provide the fully formatted LaTeX content for the given method.
-"""
-
-# Dictionary to store language instructions
 LANGUAGE_INSTRUCTIONS = {
     "en": "Please provide the response in English.",
     "es": "Por favor, proporcione la respuesta en español.",
-    # Add more languages as needed
 }
